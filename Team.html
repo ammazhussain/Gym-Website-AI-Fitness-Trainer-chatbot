@@ -1,0 +1,879 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Document</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Bootstrap CSS & Icons -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"/>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css"/>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"/>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+<style>
+    /* NAVBAR */
+    .navbar {
+    background: linear-gradient(black,#0e0e0e);
+    height: auto;
+    padding: 10px 20px;
+    z-index: 1050;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.6);
+    }
+
+    /* Navbar Brand Logo */
+    .navbar-brand img {
+    height: 25px;
+    width: auto;
+    }
+
+    /* Toggler Button */
+    .navbar-toggler {
+    border: none;
+    font-size: 1.5rem;
+    color: #f36100;
+    }
+
+    .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(243,97,0, 1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+    }
+
+    /* Toggler & Close focus */
+    .navbar-toggler:focus,
+    .btn-close {
+    box-shadow: none;
+    outline: none;
+    }
+
+    /* Nav Links */
+    .nav-link {
+    color: white;
+    font-weight: 500;
+    font-size: 16px;
+    position: relative;
+    margin-right: 28px;
+    transition: color 0.3s ease;
+    }
+
+    .nav-link:hover,
+    .nav-link:active,
+    .nav-link.active {
+    color: #f36100 !important;
+    }
+
+    /* Dropdown */
+    .nav-item.dropdown:hover .dropdown-menu {
+    display: block;
+    }
+
+    .nav-item.dropdown .dropdown-menu {
+    display: none;
+    background-color: #1e1e1e;
+    border: none;
+    padding: 5px;
+    box-shadow: 0 0 10px rgba(243, 97, 0, 0.2);
+    }
+
+    .dropdown-item {
+    color: white;
+    padding: 6px;
+    }
+
+    .dropdown-item:hover {
+    background-color: #f36100;
+    color: #0e0e0e;
+    transform: 0.5s;
+    border-radius: 4px;
+    padding: 5px;
+    }
+
+    /* Offcanvas Styling for Mobile */
+    .offcanvas {
+    background-color: #0e0e0e;
+    color: white;
+    }
+
+    .offcanvas-header {
+    border-bottom: 1px solid #1e1e1e;
+    }
+
+    .offcanvas-title {
+    font-size: 1.5rem;
+    color: #f36100;
+    }
+
+    .hero-1 {
+    height: 100vh;
+    width: 100%;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('images/breadcrumb-bg.jpg');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-align: center;
+    }
+
+
+    .hero-text {
+    text-align: center;
+    }
+
+    .hero-text h1 {
+    font-weight: 900;
+    font-size: 3.5rem;
+    color: #ffffff;
+    }
+
+    .hero-text h4 {
+    font-weight: 500;
+    font-size: 1.4rem;
+    color: #ccc;
+    }
+
+    .hero-text h4 span {
+    color: #f36100;
+    }
+
+    .btn-custom-1 {
+    color: white;
+    background-color: #f36100 ;
+    border: none;
+    transition: all 0.3s ease;
+    }
+
+    .btn-custom-1:hover {
+        color: #f36100 ;
+        background-color: white;
+    }
+    .btn-custom {
+    color: white;
+    background-color: transparent;
+    border: none;
+    transition: all 0.3s ease;
+    border: 1px solid #f36100 ;
+    }
+
+    .btn-custom:hover {
+        color: black;
+        background-color: #f36100 ;
+    }
+
+    .card:hover {
+        transform: translateY(-5px);
+        transition: transform 0.3s ease;
+    }
+      .team-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+  }
+
+    .team-card {
+        position: relative;
+        width: 316px;
+        height: 450px;
+        overflow: hidden;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .team-card img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.3s ease;
+    }
+
+    .team-card:hover img {
+        transform: scale(1.1);
+    }
+
+    .overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.6);
+        color: #fff;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+
+    .team-card:hover .overlay {
+        opacity: 1;
+    }
+
+    .overlay h3 {
+        margin-bottom: 10px;
+        font-size: 1.5rem;
+    }
+
+    .overlay p {
+        margin-bottom: 20px;
+        font-size: 1rem;
+    }
+
+    .popup {
+        display: none;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: darkgrey;
+        background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('images/Gym logo.png');
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        width: 400px;
+        max-width: 90%;
+        padding: 20px;
+        z-index: 1000;
+    }
+
+    .popup h2 {
+        margin-bottom: 10px;
+    }
+
+    .popup table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    .popup table th, .popup table td {
+        border: 1px solid #ddd;
+        padding: 8px;
+        text-align: left;
+    }
+
+    .popup-close {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        background: none;
+        border: none;
+        font-size: 18px;
+        cursor: pointer;
+        color: whitesmoke;
+    }
+
+    .popup-close:hover {
+        color: red;
+    }
+
+    .popup-overlay {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 999;
+    }
+
+    .popup-overlay.active,
+    .popup.active {
+        display: block;
+    }
+
+    strong {
+        color: darkgrey;
+    }
+
+
+    .footer a:hover {
+    color: #f36100 !important;
+    }
+
+    
+    .btn-gradient-outline {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    padding: 10px 16px;
+    color: #f36100;
+    background-color: transparent;
+    border: 1px solid #f36100;
+    overflow: hidden;
+    z-index: 1;
+    transition: color 0.4s ease;
+  }
+
+  .btn-gradient-outline::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: #f36100;
+    z-index: -1;
+    transition: left 0.4s ease;
+  }
+
+  .btn-gradient-outline:hover::before {
+    left: 0;
+  }
+
+  .btn-gradient-outline:hover {
+    color: #0e0e0e;
+  }
+
+  .card-body {
+    padding: 16px 20px;
+    background: linear-gradient(135deg, #1a1a1a, #2a2a2a);
+    border-top: 1px solid #333;
+    border-radius: 0 0 10px 10px;
+    box-shadow: inset 0 0 10px rgba(243, 97, 0, 0.1);
+    color: #e0e0e0;
+    transition: background 0.3s ease;
+    }
+
+    .card-body:hover {
+    background: linear-gradient(135deg, #2a2a2a, #1a1a1a);
+    box-shadow: inset 0 0 14px rgba(243, 97, 0, 0.15);
+    }
+
+    .small-container {
+    transform: scale(1); /* or 0.8, 0.7 etc */
+    transform-origin: top center;
+    }
+        .card-img-top {
+        filter: brightness(1.14) contrast(1.1) saturate(1.1);
+        transition: transform 0.3s ease, filter 0.3s ease;
+        border-radius: 10px 10px 0 0;
+        }
+
+        .card:hover .card-img-top {
+        transform: scale(1.03);
+        filter: brightness(1.1) contrast(1.2) saturate(1.3);
+        }
+
+</style>
+</head>
+<body>
+    <header>
+    <nav class="navbar navbar-expand-lg">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">
+          <img src="images/logo.png" alt="Logo">
+        </a>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title">Menu</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <ul class="navbar-nav ms-auto">
+              <li class="nav-item"><a class="nav-link" href="home.html">Home</a></li>
+              <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
+              <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
+              <li class="nav-item"><a class="nav-link" href="BMI.php">BMI</a></li>
+              <li class="nav-item"><a class="nav-link" href="team.html">Our Team</a></li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Records</a>
+                <ul class="dropdown-menu" style="min-width: 128px;">
+                  <li style="width: 113px;"><a class="dropdown-item" href="appointment_test.php" style="width: 107px; padding: 6px;">Appointments</a></li>
+                  <li style="width: 113px;"><a class="dropdown-item" href="records_test.php" style="width: 107px; padding: 6px;">Register</a></li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
+  <div class="hero-1">
+    <div class="hero-text">
+        <h1 class="size_text">Our Team</h1>
+        <h4>Home > <span>Our Team</span></h4>
+    </div>
+  </div>
+    <div class="text-white py-5 custom-section" style=" background: linear-gradient(105deg,#0e0e0e, #0e0e0e,#1a1a1a, #1a1a1a); position: relative;">
+        <div class="container py-3">
+            <!-- Bootstrap-based version of your HTML with all functionality retained -->
+            <div class="row align-items-center justify-content-between mb-5">
+              <div class="col-md-8">
+                <div class="text-left">
+                  <h4 style="
+                      font-size: 16px; 
+                      color: #f36100; 
+                      letter-spacing: 1.5px; 
+                      text-transform: uppercase; 
+                      margin-bottom: 8px;
+                  ">
+                    OUR TEAM
+                  </h4>
+                  <h1 style="
+                      color: white; 
+                      font-weight: 700; 
+                      font-size: 35px; 
+                      text-shadow: 0 0 10px rgba(255, 165, 0, 0.2); 
+                      margin-bottom: 10px;
+                  ">
+                    TRAIN WITH EXPERTS
+                  </h1>
+                </div>
+              </div>
+              <div class="col-md-4 text-md-end text-start mt-3 mt-md-0">
+                <a href="appointment.php"
+                  style="
+                    display: inline-block;
+                    color: #f36100;
+                    font-weight: bold;
+                    text-decoration: none;
+                    font-size: 1.1rem;
+                    background-color: transparent;
+                    padding: 10px 20px;
+                    border: 2px solid #f36100;
+                    border-radius: 8px;
+                    transition: all 0.3s ease;
+                    box-shadow: 0 0 10px rgba(243, 97, 0, 0.3);
+                  "
+                  onmouseover="this.style.backgroundColor='#f36100'; this.style.color='#0e0e0e';"
+                  onmouseout="this.style.backgroundColor='transparent'; this.style.color='#f36100';">
+                  - Appointment -
+                </a>
+              </div>
+            </div>
+
+            <div class="row g-4 small-container">
+                <!-- Team Members -->
+                <!-- Template Start -->
+                <!-- Each .col-* block represents a trainer -->
+                
+                <!-- Sam Sulek -->
+                <div class="col-sm-6 col-lg-4">
+                <div class="card bg-dark text-white">
+                    <img src="team/team-8.jpg" class="card-img-top" alt="Sam Sulek">
+                    <div class="card-body">
+                    <h5 class="card-title" style="
+                                font-size:20px;
+                                color: color-mix(in srgb, rgb(85, 83, 83) 30%, #f36100 70%);
+                                font-weight: 700; 
+                                letter-spacing: 1.5px; 
+                                text-transform: uppercase; 
+                                margin-bottom: 8px;
+                            ">Sam Sulek</h5>
+                    <p class="card-text" style="
+                                color: white; 
+                                font-size: medium; 
+                                text-shadow: 0 0 10px rgba(255, 165, 0, 0.2); 
+                                margin-bottom: 10px;
+                            ">Fitness Trainer</p>
+                        <!--<button class="btn btn-gradient-outline" onclick="openPopup(1)">
+                        View Profile
+                        </button>-->
+                        <button class="btn w-100" style="color: #f36100; border: 1px solid #f36100; background-color: transparent;" onmouseover="this.style.backgroundColor='#f36100'; this.style.color='#0e0e0e';" onmouseout="this.style.backgroundColor='transparent'; this.style.color='#f36100';" onclick="openPopup(1)">
+                        View Profile
+                        </button>
+                    </div>
+                </div>
+                </div>
+
+                <!-- Jane Smith -->
+                <div class="col-sm-6 col-lg-4">
+                <div class="card bg-dark text-white">
+                    <img src="team/team-2.jpg" class="card-img-top" alt="Jane Smith">
+                    <div class="card-body">
+                    <h5 class="card-title" style="
+                                font-size:20px;
+                                color: color-mix(in srgb, rgb(85, 83, 83) 30%, #f36100 70%);
+                                font-weight: 700; 
+                                letter-spacing: 1.5px; 
+                                text-transform: uppercase; 
+                                margin-bottom: 8px;
+                            ">Jane Smith</h5>
+                    <p class="card-text" style="
+                                color: white; 
+                                font-size: medium; 
+                                text-shadow: 0 0 10px rgba(255, 165, 0, 0.2); 
+                                margin-bottom: 10px;
+                            ">Yoga Expert</p>
+                        <button class="btn w-100" style="color: #f36100; border: 1px solid #f36100; background-color: transparent;" onmouseover="this.style.backgroundColor='#f36100'; this.style.color='#0e0e0e';" onmouseout="this.style.backgroundColor='transparent'; this.style.color='#f36100';" onclick="openPopup(2)">
+                        View Profile
+                        </button>                   
+                    </div>
+                </div>
+                </div>
+
+                <!-- Mark Taylor -->
+                <div class="col-sm-6 col-lg-4">
+                <div class="card bg-dark text-white">
+                    <img src="team/team-3.jpg" class="card-img-top" alt="Mark Taylor">
+                    <div class="card-body">
+                    <h5 class="card-title" style="
+                                font-size:20px;
+                                color: color-mix(in srgb, rgb(85, 83, 83) 30%, #f36100 70%);
+                                font-weight: 700; 
+                                letter-spacing: 1.5px; 
+                                text-transform: uppercase; 
+                                margin-bottom: 8px;
+                            ">Mark Taylor</h5>
+                    <p class="card-text" style="
+                                color: white; 
+                                font-size: medium; 
+                                text-shadow: 0 0 10px rgba(255, 165, 0, 0.2); 
+                                margin-bottom: 10px;
+                            ">Bodybuilding Coach</p>
+                        <button class="btn w-100" style="color: #f36100; border: 1px solid #f36100; background-color: transparent;" onmouseover="this.style.backgroundColor='#f36100'; this.style.color='#0e0e0e';" onmouseout="this.style.backgroundColor='transparent'; this.style.color='#f36100';" onclick="openPopup(3)">
+                        View Profile
+                        </button>                   
+                    </div>
+                </div>
+                </div>
+
+                <!-- Emily Davis -->
+                <div class="col-sm-6 col-lg-4">
+                <div class="card bg-dark text-white">
+                    <img src="team/team-4.jpg" class="card-img-top" alt="Emily Davis">
+                    <div class="card-body">
+                    <h5 class="card-title" style="
+                                font-size:20px;
+                                color: color-mix(in srgb, rgb(85, 83, 83) 30%, #f36100 70%);
+                                font-weight: 700; 
+                                letter-spacing: 1.5px; 
+                                text-transform: uppercase; 
+                                margin-bottom: 8px;
+                            ">Emily Davis</h5>
+                    <p class="card-text" style="
+                                color: white; 
+                                font-size: medium; 
+                                text-shadow: 0 0 10px rgba(255, 165, 0, 0.2); 
+                                margin-bottom: 10px;
+                            ">Nutrition Specialist</p>
+                    <button class="btn w-100" style="color: #f36100; border: 1px solid #f36100; background-color: transparent;" onmouseover="this.style.backgroundColor='#f36100'; this.style.color='#0e0e0e';" onmouseout="this.style.backgroundColor='transparent'; this.style.color='#f36100';" onclick="openPopup(4)">
+                        View Profile
+                    </button>
+                    </div>
+                </div>
+                </div>
+
+                <!-- Cbum -->
+                <div class="col-sm-6 col-lg-4">
+                <div class="card bg-dark text-white">
+                    <img src="team/team-7.jpg" class="card-img-top" alt="Cbum">
+                    <div class="card-body">
+                    <h5 class="card-title" style="
+                                font-size:20px;
+                                color: color-mix(in srgb, rgb(85, 83, 83) 30%, #f36100 70%);
+                                font-weight: 700; 
+                                letter-spacing: 1.5px; 
+                                text-transform: uppercase; 
+                                margin-bottom: 8px;
+                            ">Cbum</h5>
+                    <p class="card-text"  style="
+                                color: white; 
+                                font-size: medium; 
+                                text-shadow: 0 0 10px rgba(255, 165, 0, 0.2); 
+                                margin-bottom: 10px;
+                            ">Cardio Trainer</p>
+                    <button class="btn w-100" style="color: #f36100; border: 1px solid #f36100; background-color: transparent;" onmouseover="this.style.backgroundColor='#f36100'; this.style.color='#0e0e0e';" onmouseout="this.style.backgroundColor='transparent'; this.style.color='#f36100';" onclick="openPopup(5)">
+                        View Profile
+                    </button>
+                    </div>
+                </div>
+                </div>
+
+                <!-- Sarah Wilson -->
+                <div class="col-sm-6 col-lg-4">
+                <div class="card bg-dark text-white">
+                    <img src="team/team-6.jpg" class="card-img-top" alt="Sarah Wilson">
+                    <div class="card-body">
+                    <h5 class="card-title" style="
+                                font-size:20px;
+                                color: color-mix(in srgb, rgb(85, 83, 83) 30%, #f36100 70%);
+                                font-weight: 700; 
+                                letter-spacing: 1.5px; 
+                                text-transform: uppercase; 
+                                margin-bottom: 8px;
+                            ">Sarah Wilson</h5>
+                    <p class="card-text" style="
+                                color: white; 
+                                font-size: medium; 
+                                text-shadow: 0 0 10px rgba(255, 165, 0, 0.2); 
+                                margin-bottom: 10px;
+                            ">Pilates Instructor</p>
+                    <button class="btn w-100" style="color: #f36100; border: 1px solid #f36100; background-color: transparent;" onmouseover="this.style.backgroundColor='#f36100'; this.style.color='#0e0e0e';" onmouseout="this.style.backgroundColor='transparent'; this.style.color='#f36100';" onclick="openPopup(6)">
+                        View Profile
+                    </button>
+                    </div>
+                </div>
+                </div>
+            </div>
+
+            <!-- Modals for each team member -->
+            <div id="modals-container small-container">
+            <!-- Modal Template -->
+            <!-- Sam Sulek Modal -->
+                <div class="modal fade" id="popup-1" tabindex="-1">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content" style="background: linear-gradient(120deg,#0e0e0e, #1a1a1a,#1a1a1a, #ff5e00); color: white; border-radius: 12px;">
+                    <div class="modal-header border-0; padding:8px;">
+                        <h5 class="modal-title" style="color: #f36100; letter-spacing: 1.5px; text-transform: uppercase; font-weight: 600; font-size: 30px;">Sam Sulek</h5>
+                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p><strong>Age:</strong> 28</p>
+                        <p><strong>Weight:</strong> 85kg</p>
+                        <p><strong>Height:</strong> 6'1"</p>
+                        <p><strong>Work Experience:</strong> 6 years in Fitness Coaching</p>
+                        <p><strong>Achievements:</strong> Multiple bodybuilding competition wins</p>
+                        <p><strong>Profile Summary:</strong> A passionate fitness coach specializing in strength training and bodybuilding with a focus on personalized fitness plans.</p>
+                        <p><strong>Social Handles:</strong>
+                        <a href="https://www.instagram.com/samsulek" target="_blank">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/9/95/Instagram_logo_2022.svg" width="20" class="me-2">
+                        </a>
+                        <a href="https://twitter.com/samsulek" target="_blank">
+                            <img src="images/twitter.png" width="20">
+                        </a>
+                        </p>
+                    </div>
+                    </div>
+                </div>
+                </div>
+                <!-- Jane Smith Modal -->
+                <div class="modal fade" id="popup-2" tabindex="-1">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content" style="background: linear-gradient(120deg,#0e0e0e, #1a1a1a,#1a1a1a, #ff5e00); color: white; border-radius: 12px;">
+                    <div class="modal-header border-0; padding:8px;">
+                        <h5 class="modal-title" style="color: #f36100; letter-spacing: 1.5px; text-transform: uppercase; font-weight: 600; font-size: 30px;">Jane Smith</h5>
+                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p><strong>Age:</strong> 30</p>
+                        <p><strong>Weight:</strong> 60kg</p>
+                        <p><strong>Height:</strong> 5'6"</p>
+                        <p><strong>Work Experience:</strong> 8 years in Yoga and Wellness</p>
+                        <p><strong>Achievements:</strong> Certified Yoga Instructor, Wellness Coach</p>
+                        <p><strong>Profile Summary:</strong> A dedicated yoga expert with a holistic approach to fitness, focusing on mental and physical well-being.</p>
+                        <p><strong>Social Handles:</strong>
+                        <a href="https://www.instagram.com/janesmith" target="_blank">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/9/95/Instagram_logo_2022.svg" width="20" class="me-2">
+                        </a>
+                        <a href="https://twitter.com/janesmith" target="_blank">
+                            <img src="images/twitter.png" width="20">
+                        </a>
+                        </p>
+                        </div>
+                        </div>
+                        </div>
+                </div>
+                <!-- Mark Taylor Modal -->
+                <div class="modal fade" id="popup-3" tabindex="-1">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content" style="background: linear-gradient(120deg,#0e0e0e, #1a1a1a,#1a1a1a, #ff5e00); color: white; border-radius: 12px;">
+                    <div class="modal-header border-0; padding:8px;">
+                        <h5 class="modal-title" style="color: #f36100; letter-spacing: 1.5px; text-transform: uppercase; font-weight: 600; font-size: 30px;">Mark Taylor</h5>
+                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p><strong>Age:</strong> 32</p>
+                        <p><strong>Weight:</strong> 90kg</p>
+                        <p><strong>Height:</strong> 6'0"</p>
+                        <p><strong>Work Experience:</strong> 10 years in Bodybuilding Coaching</p>
+                        <p><strong>Achievements:</strong> National Bodybuilding Champion</p>
+                        <p><strong>Profile Summary:</strong> An experienced bodybuilding coach with a proven track record of helping clients achieve their fitness goals through tailored training programs.</p>
+                        <p><strong>Social Handles:</strong>
+                        <a href="https://www.instagram.com/marktaylor" target="_blank">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/9/95/Instagram_logo_2022.svg" width="20" class="me-2">
+                        </a>
+                        <a href="https://twitter.com/marktaylor" target="_blank">
+                            <img src="images/twitter.png" width="20">
+                        </a>
+                        </p>
+                    </div>
+                    </div>
+                </div>
+                </div>
+                <!-- Emily Davis Modal -->
+                <div class="modal fade" id="popup-4" tabindex="-1">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content" style="background: linear-gradient(120deg,#0e0e0e, #1a1a1a,#1a1a1a, #ff5e00); color: white; border-radius: 12px;">
+                    <div class="modal-header border-0; padding:8px;">
+                        <h5 class="modal-title" style="color: #f36100; letter-spacing: 1.5px; text-transform: uppercase; font-weight: 600; font-size: 30px;">Emily Davis</h5>
+                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p><strong>Age:</strong> 29</p>
+                        <p><strong>Weight:</strong> 55kg</p>
+                        <p><strong>Height:</strong> 5'5"</p>
+                        <p><strong>Work Experience:</strong> 7 years in Nutrition and Wellness</p>
+                        <p><strong>Achievements:</strong> Certified Nutritionist, Wellness Advocate</p>
+                        <p><strong>Profile Summary:</strong> A nutrition specialist dedicated to helping clients achieve their health goals through personalized meal plans and wellness strategies.</p>
+                        <p><strong>Social Handles:</strong>
+                        <a href="https://www.instagram.com/emilydavis" target="_blank">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/9/95/Instagram_logo_2022.svg" width="20" class="me-2">
+                        </a>
+                        <a href="https://twitter.com/emilydavis" target="_blank">
+                            <img src="images/twitter.png" width="20">
+                        </a>
+                        </p>
+                    </div>
+                    </div>
+                </div>
+                </div>
+                <!-- Cbum Modal -->
+                <div class="modal fade" id="popup-5" tabindex="-1">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content" style="background: linear-gradient(120deg,#0e0e0e, #1a1a1a,#1a1a1a, #ff5e00); color: white; border-radius: 12px;">
+                    <div class="modal-header border-0; padding:8px;">
+                        <h5 class="modal-title" style="color: #f36100; letter-spacing: 1.5px; text-transform: uppercase; font-weight: 600; font-size: 30px;">Cbum</h5>
+                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p><strong>Age:</strong> 30</p>
+                        <p><strong>Weight:</strong> 55kg</p>
+                        <p><strong>Height:</strong> 5'5"</p>
+                        <p><strong>Work Experience:</strong> 7 years in Nutrition and Wellness</p>
+                        <p><strong>Achievements:</strong> Certified Nutritionist, Wellness Advocate</p>
+                        <p><strong>Profile Summary:</strong> A nutrition specialist dedicated to helping clients achieve their health goals through personalized meal plans and wellness strategies.</p>
+                        <p><strong>Social Handles:</strong>
+                        <a href="https://www.instagram.com/cbum" target="_blank">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/9/95/Instagram_logo_2022.svg" width="20" class="me-2">
+                        </a>
+                        <a href="https://twitter.com/cbum" target="_blank">
+                            <img src="images/twitter.png" width="20">
+                        </a>
+                        </p>
+                    </div>
+                    </div>
+                </div>
+                </div>
+                <!-- Sarah Wilson Modal -->
+                <div class="modal fade" id="popup-6" tabindex="-1">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content" style="background: linear-gradient(120deg,#0e0e0e, #1a1a1a,#1a1a1a, #ff5e00); color: white; border-radius: 12px;">
+                    <div class="modal-header border-0; padding:8px;">
+                        <h5 class="modal-title" style="color: #f36100; letter-spacing: 1.5px; text-transform: uppercase; font-weight: 600; font-size: 30px;">Sarah Wilson</h5>
+                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p><strong>Age:</strong> 27</p>
+                        <p><strong>Weight:</strong> 50kg</p>
+                        <p><strong>Height:</strong> 5'4"</p>
+                        <p><strong>Work Experience:</strong> 5 years in Pilates Instruction</p>
+                        <p><strong>Achievements:</strong> Certified Pilates Instructor, Wellness Coach</p>
+                        <p><strong>Profile Summary:</strong> A passionate Pilates instructor focused on improving flexibility, strength, and overall wellness through tailored Pilates programs.</p>
+                        <p><strong>Social Handles:</strong>
+                        <a href="https://www.instagram.com/sarahwilson" target="_blank">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/9/95/Instagram_logo_2022.svg" width="20" class="me-2">
+                        </a>
+                        <a href="https://twitter.com/sarahwilson" target="_blank">
+                            <img src="images/twitter.png" width="20">
+                        </a>
+                        </p>
+                    </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+            
+
+
+            <!-- Repeat similar modal blocks for popup-2 to popup-6 with updated content -->
+            </div>
+            <script>
+            function openPopup(id) {
+                var modal = new bootstrap.Modal(document.getElementById('popup-' + id));
+                modal.show();
+            }
+            </script>
+
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+        </div>
+                        <footer class="footer text-white pt-5" style="background:linear-gradient(135deg,#0e0e0e,#1e1e1e,#1e1e1e); font-size: 14px;">
+                        <div class="container">
+                        <!-- Top Contact Info -->
+                        <div class="row text-center text-md-start mb-4 small">
+                            <div class="col-md-4 mb-3 d-flex align-items-center justify-content-center justify-content-md-start">
+                            <img src="images/ADDRESS-Logo.png" alt="Address Logo" class="me-2" style="border-radius: 50%; width: 40px;">
+                            <span><i class="fas fa-map-marker-alt me-2"></i>Shaheen Town, Rawalpindi</span>
+                            </div>
+                            <div class="col-md-4 mb-3 d-flex align-items-center justify-content-center justify-content-md-start">
+                            <img src="images/NUMBER-Logo.png" alt="Phone Logo" class="me-2" style="border-radius: 50%; width: 40px;">
+                            <span><i class="fas fa-phone-alt me-2"></i>125-711-811 | 125-668-886</span>
+                            </div>
+                            <div class="col-md-4 mb-3 d-flex align-items-center justify-content-center justify-content-md-start">
+                            <img src="images/MAIL-LOGO.png" alt="Mail Logo" class="me-2" style="border-radius: 50%; width: 40px;">
+                            <span><i class="fas fa-envelope me-2"></i>getfit@gmail.com</span>
+                            </div>
+                        </div>
+                    
+                        <!-- Footer Main Content -->
+                        <div class="row text-center text-md-start">
+                            <!-- Logo and Social -->
+                            <div class="col-md-3 mb-4">
+                            <img src="images/logo.png" alt="Gym Logo" style="width: 100px;" class="mb-3">
+                            <p class="text-secondary">Achieve your dream body with the right guidance, consistency, and effort.</p>
+                            <div class="d-flex justify-content-center justify-content-md-start gap-3">
+                                <a href="https://www.instagram.com/ammazhussain1/"><i class="fab fa-facebook-f text-secondary"></i></a>
+                                <a href="#"><i class="fab fa-twitter text-secondary"></i></a>
+                                <a href="#"><i class="fab fa-youtube text-secondary"></i></a>
+                                <a href="https://www.instagram.com/ammazhussain1/"><i class="fab fa-instagram text-secondary"></i></a>
+                                <a href="#"><i class="fas fa-envelope text-secondary"></i></a>
+                            </div>
+                            </div>
+                    
+                            <!-- Useful Links -->
+                            <div class="col-md-2 mb-4">
+                            <h6 class="text-white mb-3">Useful Links</h6>
+                            <ul class="list-unstyled text-secondary">
+                                <li><a href="About.html" class="text-secondary text-decoration-none">About</a></li>
+                                <li><a href="Regi.php" class="text-secondary text-decoration-none">Blog</a></li>
+                                <li><a href="Regi.php" class="text-secondary text-decoration-none">Classes</a></li>
+                                <li><a href="Regi.php" class="text-secondary text-decoration-none">Contact</a></li>
+                            </ul>
+                            </div>
+                    
+                            <!-- Support -->
+                            <div class="col-md-2 mb-4">
+                            <h6 class="text-white mb-3">Support</h6>
+                            <ul class="list-unstyled text-secondary">
+                                <li><a href="login.php" class="text-secondary text-decoration-none">Login</a></li>
+                                <li><a href="Regi.php" class="text-secondary text-decoration-none">My Account</a></li>
+                                <li><a href="Regi.php" class="text-secondary text-decoration-none">Subscribe</a></li>
+                                <li><a href="Regi.php" class="text-secondary text-decoration-none">Contact</a></li>
+                            </ul>
+                            </div>
+                    
+                            <!-- Tips & Guides -->
+                            <div class="col-md-5 mb-4">
+                            <h6 class="text-white mb-3">Tips & Guides</h6>
+                            <ul class="list-unstyled text-secondary">
+                                <li class="mb-2">
+                                <a href="#" class="text-secondary text-decoration-none">
+                                    Physical fitness may help prevent depression, anxiety
+                                </a>
+                                <br><small>3 min read | 20 Comments</small>
+                                </li>
+                                <li>
+                                <a href="#" class="text-secondary text-decoration-none">
+                                    Fitness: The best exercise to lose belly fat and tone up...
+                                </a>
+                                <br><small>3 min read | 20 Comments</small>
+                                </li>
+                            </ul>
+                            </div>
+                        </div>
+                    
+                        <!-- Bottom Footer -->
+                        <div class="text-center border-top pt-3 mt-4 small" style="border-color: rgba(255,255,255,0.1);">
+                            <p class="mb-0 text-secondary">&copy; 2024 Gym Management System. All rights reserved.</p>
+                        </div>
+                        </div>
+                    </footer>
+    </div>
+</body>

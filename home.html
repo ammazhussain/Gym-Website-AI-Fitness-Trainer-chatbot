@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Document</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Bootstrap CSS & Icons -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"/>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css"/>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"/>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+  <style>
+    /* NAVBAR */
+    .navbar {
+    background: linear-gradient(black,#0e0e0e);
+    height: auto;
+    padding: 10px 20px;
+    z-index: 1050;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.6);
+    }
+
+    /* Navbar Brand Logo */
+    .navbar-brand img {
+    height: 25px;
+    width: auto;
+    }
+
+    /* Toggler Button */
+    .navbar-toggler {
+    border: none;
+    font-size: 1.5rem;
+    color: #f36100;
+    }
+
+    .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(243,97,0, 1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+    }
+
+    /* Toggler & Close focus */
+    .navbar-toggler:focus,
+    .btn-close {
+    box-shadow: none;
+    outline: none;
+    }
+
+    /* Nav Links */
+    .nav-link {
+    color: white;
+    font-weight: 500;
+    font-size: 16px;
+    position: relative;
+    margin-right: 28px;
+    transition: color 0.3s ease;
+    }
+
+    .nav-link:hover,
+    .nav-link:active,
+    .nav-link.active {
+    color: #f36100 !important;
+    }
+
+    /* Dropdown */
+    .nav-item.dropdown:hover .dropdown-menu {
+    display: block;
+    }
+
+    .nav-item.dropdown .dropdown-menu {
+    display: none;
+    background-color: #1e1e1e;
+    border: none;
+    padding: 5px;
+    box-shadow: 0 0 10px rgba(243, 97, 0, 0.2);
+    }
+
+    .dropdown-item {
+    color: white;
+    padding: 6px;
+    }
+
+    .dropdown-item:hover {
+    background-color: #f36100;
+    color: #0e0e0e;
+    transform: 0.5s;
+    border-radius: 4px;
+    padding: 5px;
+    }
+
+    /* Offcanvas Styling for Mobile */
+    .offcanvas {
+    background-color: #0e0e0e;
+    color: white;
+    }
+
+    .offcanvas-header {
+    border-bottom: 1px solid #1e1e1e;
+    }
+
+    .offcanvas-title {
+    font-size: 1.5rem;
+    color: #f36100;
+    }
+
+    .hero-1 {
+    height: 100vh;
+    width: 100%;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('images/hero-1.jpg');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-align: center;
+    }
+
+    .hero-1 h1 {
+        font-size: 4em;
+    }
+
+    .bottom-right {
+        position: absolute;
+        bottom: 25px;
+        right: 25px;
+        text-align: right;
+    }
+
+    .bottom-right h3 {
+        font-size: 1.5em;
+        margin-bottom: 10px;
+    }
+
+    .bottom-right h1 {
+        font-size: 3.3em;
+        line-height: 1.1;
+        font-weight: 650;
+    }
+
+    .btn-custom-1 {
+    color: white;
+    background-color: #f36100 ;
+    border: none;
+    transition: all 0.3s ease;
+    }
+
+    .btn-custom-1:hover {
+        color: #f36100 ;
+        background-color: white;
+    }
+    .btn-custom {
+    color: white;
+    background-color: transparent;
+    border: none;
+    transition: all 0.3s ease;
+    border: 1px solid #f36100 ;
+    }
+
+    .btn-custom:hover {
+        color: black;
+        background-color: #f36100 ;
+    }
+
+    .card:hover {
+        transform: translateY(-5px);
+        transition: transform 0.3s ease;
+    }
+
+    .footer a:hover {
+    color: #f36100 !important;
+    }
+    .section-title h2 {
+    font-size: 22px;
+    color: #f36100;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    }
+
+    .section-title h1 {
+        color: white;
+        font-weight: 700;
+        font-size: 46px;
+        text-shadow: 0 0 10px rgba(255, 165, 0, 0.3);
+        margin-bottom: 20px;
+    }
+
+    .section-title p {
+        color: #bbbbbb;
+        max-width: 600px;
+        margin: 0 auto;
+        font-size: 16px;
+    }
+    .section-title h4 {
+    font-size: 18px;
+    color: #f36100;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+    }
+    .class-img {
+    transition: transform 0.4s ease;
+    }
+
+    .image-container:hover .class-img {
+        transform: scale(1.05);
+    }
+          .btn-theme-animated,
+      .btn-theme-animated *,
+      .btn-theme-animated :after,
+      .btn-theme-animated :before,
+      .btn-theme-animated:after,
+      .btn-theme-animated:before {
+        border: 0 solid;
+        box-sizing: border-box;
+      }
+
+      .btn-theme-animated {
+        background-color: transparent;
+        color: #f36100;
+        cursor: pointer;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        font-weight: bold;
+        text-transform: uppercase;
+        padding: 12px 28px;
+        border: 2px solid #f36100;
+        border-radius: 10px;
+        position: relative;
+        overflow: hidden;
+        font-size: 0.95rem;
+        box-shadow: 0 0 10px rgba(243, 97, 0, 0.3);
+        transition: color 0.3s ease;
+        z-index: 1;
+      }
+
+      .btn-theme-animated .original {
+        background: #f36100;
+        color: #0e0e0e;
+        display: grid;
+        inset: 0;
+        place-content: center;
+        position: absolute;
+        transition: transform 0.3s ease;
+        z-index: -1;
+      }
+
+      .btn-theme-animated:hover .original {
+        transform: translateY(100%);
+      }
+
+      .btn-theme-animated .letters {
+        display: inline-flex;
+        z-index: 2;
+      }
+
+      .btn-theme-animated span {
+        opacity: 0;
+        transform: translateY(-15px);
+        transition: transform 0.3s ease, opacity 0.3s;
+        color: #f36100;
+      }
+
+      .btn-theme-animated span:nth-child(2n) {
+        transform: translateY(15px);
+      }
+
+      .btn-theme-animated:hover span {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .btn-theme-animated:hover span:nth-child(2) {
+        transition-delay: 0.05s;
+      }
+
+      .btn-theme-animated:hover span:nth-child(3) {
+        transition-delay: 0.1s;
+      }
+
+      .btn-theme-animated:hover span:nth-child(4) {
+        transition-delay: 0.15s;
+      }
+
+      .btn-theme-animated:hover span:nth-child(5) {
+        transition-delay: 0.2s;
+      }
+
+      .btn-theme-animated:hover span:nth-child(6) {
+        transition-delay: 0.25s;
+      }
+
+      .btn-theme-animated:hover span:nth-child(7) {
+        transition-delay: 0.3s;
+      }
+
+      .btn-theme-animated:hover span:nth-child(8) {
+        transition-delay: 0.35s;
+      }
+
+
+  </style>
+</head>
+<body>
+
+  <header>
+    <nav class="navbar navbar-expand-lg">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">
+          <img src="images/logo.png" alt="Logo">
+        </a>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title">Menu</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <ul class="navbar-nav ms-auto">
+              <li class="nav-item"><a class="nav-link" href="Home.html">Home</a></li>
+              <li class="nav-item"><a class="nav-link" href="About.html">About Us</a></li>
+              <li class="nav-item"><a class="nav-link" href="Services.html">Services</a></li>
+              <li class="nav-item"><a class="nav-link" href="BMI.php">BMI</a></li>
+              <li class="nav-item"><a class="nav-link" href="Team.html">Our Team</a></li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Records</a>
+                <ul class="dropdown-menu" style="min-width: 128px;">
+                  <li style="width: 113px;"><a class="dropdown-item" href="appointment_test.php" style="width: 107px; padding: 6px;">Appointments</a></li>
+                  <li style="width: 113px;"><a class="dropdown-item" href="records_test.php" style="width: 107px; padding: 6px;">Register</a></li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
+    <div class="text-white custom-section" style="color: black; background-color:rgb(242, 242, 242); position: relative;">
+        <div class="hero-1"><div class="bottom-right" style="position: absolute; bottom: 40px; right: 40px; text-align: right;">
+            <a href="chat.html"
+               style="
+                  display: inline-block;
+                  color: #f36100;
+                  font-weight: bold;
+                  text-decoration: none;
+                  font-size: 1.2rem;
+                  background-color: transparent;
+                  padding: 10px 20px;
+                  border: 2px solid #f36100;
+                  border-radius: 8px;
+                  transition: all 0.3s ease;
+                  box-shadow: 0 0 10px rgba(243, 97, 0, 0.3);
+               "
+               onmouseover="this.style.backgroundColor='#f36100'; this.style.color='#0e0e0e';"
+               onmouseout="this.style.backgroundColor='#1e1e1e'; this.style.color='#f36100';">
+              - Try AI Fitness Chatbot -
+            </a>
+          
+            <h1 class="size_text"
+                style="
+                  font-size: 3rem;
+                  font-weight: 800;
+                  margin-top: 20px;
+                  color: #ffffff;
+                  text-shadow: 2px 2px 4px #000;
+                  line-height: 1.2;
+               ">
+              BE <span style="color: #f36100;">STRONG</span><br>TRAIN HARD
+            </h1>
+          </div>          
+        </div>
+    </div>
+    <!-- Code 2:Why choose us -->
+    <div class="text-white py-5 custom-section" style=" background: linear-gradient(105deg,#0e0e0e, #0e0e0e,#1a1a1a, #1a1a1a); position: relative;">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h4 style="font-size: 15px; color: #f36100 ; letter-spacing: 2px; font-weight: 600; margin-bottom: 8px;">WHY CHOOSE US?</h4>
+                <h1 style="color: white; font-weight: 700; font-size: 34px; text-transform: uppercase;">Push Your Limits Forward</h1>
+            </div> 
+                       
+            <div class="row text-center">
+                <div class="col-md-3 mb-4">
+                    <a href="#" class="logo-btn d-block mb-3">
+                        <img src="images/logo_1.png" alt="Logo" class="img-fluid" style="max-height: 80px; border-radius:50%;">
+                    </a>
+                    <h3 class="font-weight-bold"  style=" font-size:20px">Modern Equipment</h3>
+                    <h5 class="mt-3" style="color: lightgray; font-weight: 300; font-size: medium;">
+                        Our gym offers the latest in fitness technology, providing you with the tools for effective and enjoyable workouts.
+                    </h5>
+                </div>
+
+                <div class="col-md-3 mb-4">
+                    <a href="#" class="logo-btn d-block mb-3">
+                        <img src="images/Logo_2.png" alt="Logo" class="img-fluid" style="max-height: 80px; border-radius:50%;">
+                    </a>
+                    <h3 class="font-weight-bold" style=" font-size:20px">Healthy Nutrition Plan</h3>
+                    <h5 class="mt-3" style="color: lightgray; font-weight: 300; font-size: medium;">
+                        Our healthy nutrition plans are meticulously crafted to fuel your body and support your overall well-being.
+                    </h5>
+                </div>
+
+                <div class="col-md-3 mb-4">
+                    <a href="#" class="logo-btn d-block mb-3">
+                        <img src="images/logo_3.png" alt="Logo" class="img-fluid" style="max-height: 80px; border-radius: 50%">
+                    </a>
+                    <h3 class="font-weight-bold" style=" font-size:20px">Professional Training Plan</h3>
+                    <h5 class="mt-3" style="color: lightgray; font-weight: 300; font-size: medium;">
+                        Get expert guidance from trainers who design plans tailored to your specific fitness goals.
+                    </h5>
+                </div>
+
+                <div class="col-md-3 mb-4">
+                    <a href="#" class="logo-btn d-block mb-3">
+                        <img src="images/Logo_4.png" alt="Logo" class="img-fluid" style="max-height: 80px; border-radius: 50%">
+                    </a>
+                    <h3 class="font-weight-bold" style=" font-size:20px">Unique to Your Needs</h3>
+                    <h5 class="mt-3" style="color: lightgray; font-weight: 300; font-size: medium;">
+                        Our offerings are customized to match your individual preferences and goals.
+                    </h5>
+                </div>
+            </div> 
+        </div>
+
+    <!-- Code 3: Gallery-->
+
+        <div class="container my-7" style="padding-top: 20px;">
+            <div class="text-center mb-5">
+                <h4 style="
+                    font-size: 18px; 
+                    color: #f36100 ; 
+                    letter-spacing: 1.5px; 
+                    text-transform: uppercase; 
+                    margin-bottom: 8px;
+                ">
+                    OUR CLASSES
+                </h4>
+                <h1 style="
+                    color: white; 
+                    font-weight: 700; 
+                    font-size: 42px; 
+                    text-shadow: 0 0 10px rgba(255, 165, 0, 0.2); 
+                    margin-bottom: 10px;
+                ">
+                    What Can We Offer
+                </h1>
+            </div>            
+
+            <!-- First Row -->
+            <div class="row mb-4">
+                <div class="col-md-4 mb-4">
+                    <div class="image-container position-relative overflow-hidden rounded-3 shadow">
+                        <img src="images/Cardio.jpg" alt="Cardio" class="img-fluid w-100 class-img">
+                        <div class="overlay-text position-absolute text-white p-3 d-flex flex-column justify-content-end" style="bottom: 0; background: linear-gradient(to top, rgba(0,0,0,0.8), transparent); width: 100%; height: 100%;">
+                            <h5 style="font-size: 15px; color: #f36100 ; letter-spacing: 1px; margin-bottom: 4px;">CARDIO</h5>
+                            <h3 style="font-size: 24px; font-weight: 600;">WEIGHT LOSS</h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="image-container position-relative overflow-hidden rounded-3 shadow">
+                        <img src="classes/class-2.jpg" alt="Yoga" class="img-fluid w-100 class-img">
+                        <div class="overlay-text position-absolute text-white p-3 d-flex flex-column justify-content-end" style="bottom: 0; background: linear-gradient(to top, rgba(0,0,0,0.8), transparent); width: 100%; height: 100%;">
+                            <h5 style="font-size: 15px; color: #f36100 ; letter-spacing: 1px; margin-bottom: 4px;">YOGA</h5>
+                            <h3 style="font-size: 24px; font-weight: 600;">FLEXIBILITY</h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="image-container position-relative overflow-hidden rounded-3 shadow">
+                        <img src="classes/class-3.jpg" alt="Strength" class="img-fluid w-100 class-img">
+                        <div class="overlay-text position-absolute text-white p-3 d-flex flex-column justify-content-end" style="bottom: 0; background: linear-gradient(to top, rgba(0,0,0,0.8), transparent); width: 100%; height: 100%;">
+                            <h5 style="font-size: 15px; color: #f36100 ; letter-spacing: 1px; margin-bottom: 4px;">STRENGTH</h5>
+                            <h3 style="font-size: 24px; font-weight: 600;">KETTLEBELL POWER</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Second Row -->
+            <div class="row">
+                <div class="col-md-6 mb-4">
+                    <div class="image-container position-relative overflow-hidden rounded-3 shadow">
+                        <img src="classes/class-4.jpg" alt="Muscle Training" class="img-fluid w-100 class-img">
+                        <div class="overlay-text position-absolute text-white p-3 d-flex flex-column justify-content-end" style="bottom: 0; background: linear-gradient(to top, rgba(0,0,0,0.8), transparent); width: 100%; height: 100%;">
+                            <h5 style="font-size: 15px; color: #f36100 ; letter-spacing: 1px; margin-bottom: 4px;">STRENGTH</h5>
+                            <h3 style="font-size: 25px; font-weight: 600;">MUSCLE TRAINING</h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-4">
+                    <div class="image-container position-relative overflow-hidden rounded-3 shadow">
+                        <img src="classes/class-5.jpg" alt="Boxing" class="img-fluid w-100 class-img">
+                        <div class="overlay-text position-absolute text-white p-3 d-flex flex-column justify-content-end" style="bottom: 0; background: linear-gradient(to top, rgba(0,0,0,0.8), transparent); width: 100%; height: 100%;">
+                            <h5 style="font-size: 15px; color: #f36100 ; letter-spacing: 1px; margin-bottom: 4px;">TRAINING</h5>
+                            <h3 style="font-size: 25px; font-weight: 600;">BOXING</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Code:4 Hero Section -->
+    <section class="hero-section d-flex align-items-center justify-content-center text-center text-white" style="height: 100vh; background-image: url('images/Background-1.png'); background-size: cover; background-position: center;">
+        <div class="container">
+            <h1 class="display-4 fw-bold" style="font-size: 50px; font-weight: 660;">REGISTER NOW TO GET MORE DETAILS</h1>
+            <p class="lead text-light" style="font-size: 21px; color: grey;">WHERE HEALTH, BEAUTY, FITNESS MEET</p>
+            <button class="btn-theme-animated">
+                <a href="Regi.php">
+                <div class="original">Register</div>
+                <div class="letters">
+                  <span>R</span>
+                  <span>E</span>
+                  <span>G</span>
+                  <span>I</span>
+                  <span>S</span>
+                  <span>T</span>
+                  <span>E</span>
+                  <span>R</span>
+                </div>
+                </a>
+            </button>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="Pricing-plan">
+    <div class="text-white py-5 custom-section" style="background: linear-gradient(120deg,#0e0e0e, #1a1a1a,#1a1a1a, #ff5e00);">
+        <div class="container text-center">
+            
+            <div class="text-center my-5">
+                <h2 style="
+                    font-size: 22px; 
+                    color: #f36100 ; 
+                    letter-spacing: 2px; 
+                    text-transform: uppercase; 
+                    margin-bottom: 10px;
+                ">
+                    Our Plan
+                </h2>
+                <h1 style="
+                    color: white; 
+                    font-weight: 700; 
+                    font-size: 46px; 
+                    text-shadow: 0 0 10px rgba(255, 165, 0, 0.3); 
+                    margin-bottom: 20px;
+                ">
+                    Choose Your Pricing Plan
+                </h1>
+            </div>            
+
+            <div class="row justify-content-center g-4" >
+                <!-- Basic Membership -->
+                <div class="col-md-3">
+                    <div class="card h-100 shadow-lg border-0" style="background-color: #1f1f1f; border-radius: 16px;">
+                      <div class="card-body p-4 text-white" style="background: linear-gradient(145deg, #2c2c2c, #1a1a1a); border-radius: 16px;">
+                        <h3 class="card-title mb-3" style="font-size: 26px; font-weight: 700;">Basic Membership</h3>
+                        <h2 class="text-primary mb-1">
+                          <span style="color: #f36100 ; font-weight: 800; font-size: 40px;">$29.99</span>
+                        </h2>
+                        <p class="text-muted mb-3" style="color: #bbb;">— Monthly —</p>
+                        <ul class="list-unstyled mb-4" style="font-weight: 500; line-height: 1.8;">
+                          <li><i class="fas fa-check-circle me-2 text-success"></i>Access to all equipment</li>
+                          <li><i class="fas fa-check-circle me-2 text-success"></i>Diet plan</li>
+                          <li><i class="fas fa-check-circle me-2 text-success"></i>Personal trainer</li>
+                          <li><i class="fas fa-check-circle me-2 text-success"></i>Weight losing classes</li>
+                          <li><i class="fas fa-check-circle me-2 text-success"></i>No time restriction</li>
+                          <br>
+                        </ul>
+                        <a href="Regi.php" class="btn mt-2 w-100 text-white" style="background: #f36100 ; font-weight: 600; border-radius: 30px;">ENROLL NOW</a>
+                      </div>
+                    </div>
+                  </div>
+                  
+
+                <!-- Gold Membership -->
+                    <div class="col-md-3">
+                        <div class="card h-100 shadow-lg border-0" style="background-color: #1f1f1f; border-radius: 16px;">
+                            <div class="card-body p-4 text-white" style="background: linear-gradient(145deg, #2c2c2c, #1a1a1a); border-radius: 16px;">
+                                <h3 class="card-title mb-3" style="font-size: 26px; font-weight: 700;">Gold Membership</h3>
+                                <h2 class="text-primary mb-1">
+                                    <span style="color: #f36100 ; font-weight: 800; font-size: 40px;">$39.99</span>
+                                </h2>
+                                <p class="text-muted mb-3" style="color: #bbb;">— Monthly —</p>
+                                <ul class="list-unstyled mb-4" style="font-weight: 500; line-height: 1.8;">
+                                    <li><i class="fas fa-check-circle me-2 text-success"></i>Access to all equipment</li>
+                                    <li><i class="fas fa-check-circle me-2 text-success"></i>Diet plans</li>
+                                    <li><i class="fas fa-check-circle me-2 text-success"></i>Personal trainer</li>
+                                    <li><i class="fas fa-check-circle me-2 text-success"></i>Weight losing classes</li>
+                                    <li><i class="fas fa-check-circle me-2 text-success"></i>Yoga classes</li>
+                                    <li><i class="fas fa-check-circle me-2 text-success"></i>No time restriction</li>
+                                </ul>
+                                <a href="Regi.php" class="btn mt-2 w-100 text-white" style="background: #f36100 ; font-weight: 600; border-radius: 30px;">ENROLL NOW</a>
+                            </div>
+                        </div>
+                    </div>
+
+
+                <!-- Diamond Membership -->
+                    <div class="col-md-3">
+                        <div class="card h-100 shadow-lg border-0" style="background-color: #1f1f1f; border-radius: 16px;">
+                            <div class="card-body p-4 text-white" style="background: linear-gradient(145deg, #2c2c2c, #1a1a1a); border-radius: 16px;">
+                                <h3 class="card-title mb-3" style="font-size: 26px; font-weight: 700;">Diamond Membership</h3>
+                                <h2 class="text-primary mb-1">
+                                    <span style="color: #f36100 ; font-weight: 800; font-size: 40px;">$59.99</span>
+                                </h2>
+                                <p class="text-muted mb-3" style="color: #bbb;">— Monthly —</p>
+                                <ul class="list-unstyled mb-4" style="font-weight: 500; line-height: 1.8;">
+                                    <li><i class="fas fa-check-circle me-2 text-success"></i>Access to all equipment</li>
+                                    <li><i class="fas fa-check-circle me-2 text-success"></i>Diet plan</li>
+                                    <li><i class="fas fa-check-circle me-2 text-success"></i>Personal trainer</li>
+                                    <li><i class="fas fa-check-circle me-2 text-success"></i>Weight losing classes</li>
+                                    <li><i class="fas fa-check-circle me-2 text-success"></i>Pool + Sauna</li>
+                                    <li><i class="fas fa-check-circle me-2 text-success"></i>No time restriction</li>
+                                </ul>
+                                <a href="Regi.php" class="btn mt-2 w-100 text-white" style="background: #f36100 ; font-weight: 600; border-radius: 30px;">ENROLL NOW</a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        </section>
+    </div>
+    <!-- Footer-->
+    <footer class="footer text-white pt-5" style="background:linear-gradient(135deg,#0e0e0e,#1e1e1e,#1e1e1e); font-size: 14px;">
+        <div class="container">
+          <!-- Top Contact Info -->
+          <div class="row text-center text-md-start mb-4 small">
+            <div class="col-md-4 mb-3 d-flex align-items-center justify-content-center justify-content-md-start">
+              <img src="images/ADDRESS-Logo.png" alt="Address Logo" class="me-2" style="border-radius: 50%; width: 40px;">
+              <span><i class="fas fa-map-marker-alt me-2"></i>Shaheen Town, Rawalpindi</span>
+            </div>
+            <div class="col-md-4 mb-3 d-flex align-items-center justify-content-center justify-content-md-start">
+              <img src="images/NUMBER-Logo.png" alt="Phone Logo" class="me-2" style="border-radius: 50%; width: 40px;">
+              <span><i class="fas fa-phone-alt me-2"></i>125-711-811 | 125-668-886</span>
+            </div>
+            <div class="col-md-4 mb-3 d-flex align-items-center justify-content-center justify-content-md-start">
+              <img src="images/MAIL-LOGO.png" alt="Mail Logo" class="me-2" style="border-radius: 50%; width: 40px;">
+              <span><i class="fas fa-envelope me-2"></i>getfit@gmail.com</span>
+            </div>
+          </div>
+      
+          <!-- Footer Main Content -->
+          <div class="row text-center text-md-start">
+            <!-- Logo and Social -->
+            <div class="col-md-3 mb-4">
+              <img src="images/logo.png" alt="Gym Logo" style="width: 100px;" class="mb-3">
+              <p class="text-secondary">Achieve your dream body with the right guidance, consistency, and effort.</p>
+              <div class="d-flex justify-content-center justify-content-md-start gap-3">
+                <a href="https://www.instagram.com/ammazhussain1/"><i class="fab fa-facebook-f text-secondary"></i></a>
+                <a href="#"><i class="fab fa-twitter text-secondary"></i></a>
+                <a href="#"><i class="fab fa-youtube text-secondary"></i></a>
+                <a href="https://www.instagram.com/ammazhussain1/"><i class="fab fa-instagram text-secondary"></i></a>
+                <a href="#"><i class="fas fa-envelope text-secondary"></i></a>
+              </div>
+            </div>
+      
+            <!-- Useful Links -->
+            <div class="col-md-2 mb-4">
+              <h6 class="text-white mb-3">Useful Links</h6>
+              <ul class="list-unstyled text-secondary">
+                <li><a href="About.html" class="text-secondary text-decoration-none">About</a></li>
+                <li><a href="Regi.php" class="text-secondary text-decoration-none">Blog</a></li>
+                <li><a href="Regi.php" class="text-secondary text-decoration-none">Classes</a></li>
+                <li><a href="Regi.php" class="text-secondary text-decoration-none">Contact</a></li>
+              </ul>
+            </div>
+      
+            <!-- Support -->
+            <div class="col-md-2 mb-4">
+              <h6 class="text-white mb-3">Support</h6>
+              <ul class="list-unstyled text-secondary">
+                <li><a href="login.php" class="text-secondary text-decoration-none">Login</a></li>
+                <li><a href="Regi.php" class="text-secondary text-decoration-none">My Account</a></li>
+                <li><a href="Regi.php" class="text-secondary text-decoration-none">Subscribe</a></li>
+                <li><a href="Regi.php" class="text-secondary text-decoration-none">Contact</a></li>
+              </ul>
+            </div>
+      
+            <!-- Tips & Guides -->
+            <div class="col-md-5 mb-4">
+              <h6 class="text-white mb-3">Tips & Guides</h6>
+              <ul class="list-unstyled text-secondary">
+                <li class="mb-2">
+                  <a href="#" class="text-secondary text-decoration-none">
+                    Physical fitness may help prevent depression, anxiety
+                  </a>
+                  <br><small>3 min read | 20 Comments</small>
+                </li>
+                <li>
+                  <a href="#" class="text-secondary text-decoration-none">
+                    Fitness: The best exercise to lose belly fat and tone up...
+                  </a>
+                  <br><small>3 min read | 20 Comments</small>
+                </li>
+              </ul>
+            </div>
+          </div>
+      
+          <!-- Bottom Footer -->
+          <div class="text-center border-top pt-3 mt-4 small" style="border-color: rgba(255,255,255,0.1);">
+            <p class="mb-0 text-secondary">&copy; 2024 Gym Management System. All rights reserved.</p>
+          </div>
+        </div>
+      </footer>
+      
+      
+  <!-- JS to Add/Remove Active Class -->
+  <script>
+    const navLinks = document.querySelectorAll('.nav-link');
+
+    navLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        navLinks.forEach(l => l.classList.remove('active'));
+        link.classList.add('active');
+      });
+    });
+  </script>
+
+</body>
+</html>
